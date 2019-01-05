@@ -8,7 +8,7 @@ This module is used to transform a system of arbitrary high degree equations
 over `GF(2)`, into an equivalaent quadratic system. This is done by introducing
 new variables to encode high degree monomials and new equations relating them. 
 
-## Python example
+## Python Example
 ```
 import DegreeDropper
 sys = ["x1*x3 + x2", "x2*x1*x4 + x1*x3 + x1 + 1", "x1*x2*x3*x4 + x1*x3*x2 + x2*x3 + x1"]
@@ -16,7 +16,7 @@ all_eqs, all_vars = DegreeDropper.simple_degree_dropper(sys)
 print(all_eqs)
 print(all_vars)
 ```
-## SageMath example
+## SageMath Example
 ```
 import DegreeDropper
 sys = ["x1*x3 + x2", "x2*x1*x4 + x1*x3 + x1 + 1", "x1*x2*x3*x4 + x1*x3*x2 + x2*x3 + x1 + 1"]
