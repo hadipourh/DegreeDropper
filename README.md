@@ -1,0 +1,2 @@
+# DegreeDropper
+Degree Dropper Algorithm
