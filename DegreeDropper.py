@@ -7,7 +7,7 @@ This is a python module implementing the degree dropper algorithm based on
 page 197, Algebraic Cryptanlysis, G. V. Bard.
 
 This module is used to transform a system of arbitrary high degree equations
-over GF(2), into an equivalaent quadratic system. This is done by introducing
+over GF(2), into an equivalent quadratic system. This is done by introducing
 new variables to encode high degree monomials and new equations relating them. 
 """
 
@@ -19,8 +19,8 @@ reference_variables = list()
 
 def get_variables_from_monomial(monomial):
     """
-    it gets a non-constant monomial like x*y*z and 
-    rturns a list consisting of given monomial's
+    It is is fed by a non-constant monomial like x*y*z and 
+    returns a list consisting of given monomial's
     variables. which in this case are: ['x', 'y', 'z']
     """
     assert(not monomial.isdigit())
@@ -30,7 +30,7 @@ def get_variables_from_monomial(monomial):
 
 def get_variables_from_list_of_monomials(list_of_monomials):
     """
-    it gets a list of monomials and rturns the variables 
+    It is fed by a list of monomials and returns the variables 
     which are used in the given monomials
     """
     vars = set()
@@ -42,7 +42,7 @@ def get_variables_from_list_of_monomials(list_of_monomials):
 
 def get_monomials_from_polynomial(polynomial):
     """
-    it gets a polynomial, and returns its monomials
+    It is fed by a polynomial, and returns its monomials
     """
     monomials = polynomial.split(' + ')
     if '1' in monomials:
@@ -51,7 +51,7 @@ def get_monomials_from_polynomial(polynomial):
 
 def get_monomials_from_list_of_polys(polys):
     """
-    it gets a list of polynomials and returns
+    It is fed by a list of polynomials and returns
     all of the monomials which are used in the given 
     polynomials
     """
@@ -63,7 +63,7 @@ def get_monomials_from_list_of_polys(polys):
 
 def update_reference_variable(variables):
     """
-    updates reference variables, whenever a degree dropper
+    Updates reference variables, whenever a degree dropper
     function is called
     """
     global reference_variables
@@ -75,24 +75,24 @@ def update_reference_variable(variables):
 
 def clear_reference_variables():
     """
-    it is used to clear the list of reference variables
+    Clear the list of reference variables
     """
     global reference_variables
     reference_variables.clear()
 
 def degree_of_monomial(monomial):
     """
-    it returns degree of the given monomial
+    Returns degree of the given monomial
     """
     vars = get_variables_from_monomial(monomial)
     return len(vars)    
 
 def __monomial_degree_dropper(monomial, extra_var_name = 't'):
     """
-    it gets a monomial and returns three outputs:
+    It is fed by a monomial and returns three outputs:
     1 - Extra quadratic equations needed to decrease the monomial's 
     degree to two
-    2 - Extra variables which are created to get an equavalent
+    2 - Extra variables which are created to get an equivalent
     quadratic system of equations
     3 - A quadratic term according to new variables 
     which can be replaced with the given monomial
@@ -127,7 +127,7 @@ def __monomial_degree_dropper(monomial, extra_var_name = 't'):
 
 def polynomial_degree_dropper(polynomial):
     """
-    it gets a boolean polynomial and returns two outputs:
+    It is fed by a boolean polynomial and returns two outputs:
     1 - a system of equations of degree at most two which is equivalanet 
     to the main equation
     2 - all extra variables generated to obtain the equivalent system of 
@@ -159,11 +159,11 @@ def polynomial_degree_dropper(polynomial):
 
 def simple_degree_dropper(poly_sys):
     """
-    it gets a system of polynomial equations and returns two outputs:
-    1 - A system of polynomial equations of degree at most two, whih is equivalent with 
+    It is fed by a system of polynomial equations and returns two outputs:
+    1 - A system of polynomial equations of degree at most two, which is equivalent with 
     the given system
 
-    2 - List of all variables used in the equivalent system of quadratic equations, in sahpe of
+    2 - List of all variables used in the equivalent system of quadratic equations, in shape of
     [main_variables] + [extra_variables]    
     """
     global reference_variables
@@ -211,11 +211,11 @@ monomials = DegreeDropper.get_monomials_from_list_of_polys(sys)
 vars = DegreeDropper.get_variables_from_list_of_monomials(monomials)
 B = BooleanPolynomialRing(len(vars), vars)
 ps = map(B, sys)
-I = Ideal(ps) 
+I = Ideal(list(ps)) 
 sys1, vars1 = DegreeDropper.simple_degree_dropper(sys)
 B1 = BooleanPolynomialRing(len(vars1), vars1)
 ps1 = map(B1, sys1)
-I1 = Ideal(ps1)
+I1 = Ideal(list(ps1))
 %time I.variety()
 %time I1.variety()
 
