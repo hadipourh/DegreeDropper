@@ -13,13 +13,13 @@ new variables to encode high degree monomials and new equations relating them.
 
 
 
-#A global variable which contains all of the original variables in it. 
+#A global variable including all of the original variables
 reference_variables = list()
 
 
 def get_variables_from_monomial(monomial):
     """
-    It is is fed by a non-constant monomial like x*y*z and 
+    It is fed by a non-constant monomial like x*y*z and 
     returns a list consisting of given monomial's
     variables. which in this case are: ['x', 'y', 'z']
     """
@@ -82,7 +82,7 @@ def clear_reference_variables():
 
 def degree_of_monomial(monomial):
     """
-    Returns degree of the given monomial
+    Returns the degree of the given monomial
     """
     vars = get_variables_from_monomial(monomial)
     return len(vars)    
