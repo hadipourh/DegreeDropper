@@ -10,23 +10,18 @@ new variables to encode high degree monomials and new equations relating them.
 
 ## Python Example
 ```
-import DegreeDropper
-sys = ["x1*x3 + x2", "x2*x1*x4 + x1*x3 + x1 + 1", "x1*x2*x3*x4 + x1*x3*x2 + x2*x3 + x1"]
-all_eqs, all_vars = DegreeDropper.simple_degree_dropper(sys)
-print(all_eqs)
-print(all_vars)
-```
-Output: 
-```
-In [1]: all_eqs                                                                                                                
-Out[1]: 
-['t012*x4 + t01*x3 + x2*x3 + x1',
- 't01*x4 + x1*x3 + x1 + 1',
+In [1]: import DegreeDropper
+In [2]: sys = ["x1*x3 + x2", "x2*x1*x4 + x1*x3 + x1 + 1", "x1*x2*x3*x4 + x1*x3*x2 + x2*x3 + x1"]
+In [3]: all_eqs, all_vars = DegreeDropper.simple_degree_dropper(sys)
+In [4]: all_eqs                                                                                                                
+Out[4]: 
+['t01*x4 + x1*x3 + x1 + 1',
+ 't012*x4 + t01*x3 + x2*x3 + x1',
  't01 + x1*x2',
  'x1*x3 + x2',
  't012 + t01*x3']
-In [2]: all_vars                                                                                                               
-Out[2]: ['x1', 'x2', 'x3', 'x4', 't01', 't012']
+In [5]: all_vars                                                                                                               
+Out[5]: ['x1', 'x2', 'x3', 'x4', 't01', 't012']
 ```
 ## SageMath Example
 ```
