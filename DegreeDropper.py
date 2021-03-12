@@ -183,9 +183,9 @@ def simple_degree_dropper(poly_sys):
             extra_variables.extend(extra_var)
             new_terms_dict[m] = new_term
     for p in poly_sys:
-        for key in new_terms_dict.keys():
-            new_equation = [new_terms_dict.get(term, term) for term in p.split(" + ")]
-            new_equation = " + ".join(new_equation)
+        p = p.replace(' ', '')
+        new_equation = [new_terms_dict.get(term, term) for term in p.split("+")]
+        new_equation = " + ".join(new_equation)
         all_equations.append(new_equation)
     extra_variables = list(set(extra_variables))
     extra_variables.sort()
